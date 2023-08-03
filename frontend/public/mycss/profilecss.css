@@ -1,0 +1,73 @@
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .container {
+    width: 75%;
+    
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    perspective: 100%;
+  }
+  .content {
+    padding: 20px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    border-radius: 10px;
+    background: linear-gradient(45deg, #007bff, #00bfa5);
+    
+  }
+  h1, p {
+    margin: 0;
+  }
+  h1 {
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  p {
+    font-size: 16px;
+  }
+  
+  .form-container {
+    position: relative;
+    z-index: 2;
+  }
+  form {
+    padding: 10%;
+  background-color: #dfd1d1;
+  border-radius: 10px;
+ 
+  }
+  label {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #474783;
+  }
+  input[type="text"],
+  select
+   {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+.mydiv {
+
+    height: 200px;
+}
+
+.ck-editor__editable {min-height: 300px;}
