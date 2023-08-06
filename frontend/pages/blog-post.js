@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 import Head from 'next/head';
 import { useEffect } from 'react';
+import HomeLayout from '../components/Layout/HomeLayout';
 import Router from 'next/router'
 export default function blognew( {username,email,loggedIn} ) {
 
@@ -73,140 +74,27 @@ export default function blognew( {username,email,loggedIn} ) {
 	
     
     return (
+		
         <div>
-            <Head>
-
-
-                <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet" type="text/css"></link>
-                <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet" type="text/css"></link>
-                
-                <link href="https://fonts.googleapis.com/css?family=Roboto:400,900,300,300italic,500,700" rel="stylesheet" type="text/css"></link>
-                <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images//apple-touch-icon-114x114-precomposed.png"></link>
-
-                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images//apple-touch-icon-72x72-precomposed.png"></link>
-
-                <link rel="apple-touch-icon-precomposed" href="/images//apple-touch-icon-57x57-precomposed.png"></link>
-
-
-                <link rel="stylesheet" type="text/css" href="/libraries/lib.css"></link>
-                <link rel="stylesheet" type="text/css" href="/libraries/Stroke-Gap-Icon/stroke-gap-icon.css"></link>
-
-                <link rel="stylesheet" type="text/css" href="/css/plugins.css"></link>
-                <link rel="stylesheet" type="text/css" href="/css/navigation-menu.css"></link>
-
-                    
-                <link rel="stylesheet" type="text/css" href="/edu/style.css"></link>
-                <link rel="stylesheet" type="text/css" href="/css/shortcode.css"></link>
-				
-				
-
-				
-
-
-				
-
-                
-            </Head>
-
+			
+			<Head>
+			<link rel="stylesheet" type="text/css" href="/edu/style.css"></link>
+			
+		</Head>
             <div>
             
-	<div id="" className="">
-		<div className="loader">
-			<div className="loader-inner ball-clip-rotate">
-				<div></div>
-			</div>
-		</div>
-	</div>
-	<header className="header-main container-fluid no-padding">
-		
-		<div className="top-header container-fluid no-padding">
-			<div className="container">
-				<div className="topheader-left">
-					<a href="tel:+5198759822" title="5198759822"><i className="fa fa-mobile" aria-hidden="true"></i>(519) - 875 - 9822 </a>
-					<a href="mailto:Support@info.com" title="Support@info.com"><i className="fa fa-envelope-o" aria-hidden="true"></i>Emailus: Support@info.com</a>
-				</div>
 
 
-				{renderContent()}
-				
-				
-			</div>
-		</div>
-		<div className="menu-block container-fluid no-padding">
-			
-			<div className="container">
-				<div className="row">
-					
-					<nav className="navbar ow-navigation">
-						<div className="col-md-3">
-							<div className="navbar-header">
-								<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" className="navbar-toggle collapsed" type="button">
-									<span className="sr-only">Toggle navigation</span>
-									<span className="icon-bar"></span>
-									<span className="icon-bar"></span>
-									<span className="icon-bar"></span>
-								</button>
-								<a title="Logo" href="index.html" className="navbar-brand"><img src="images/logo.png" alt="logo"/>Edumax<span>Education of Best</span></a>
-								<a href="index.html" className="mobile-logo" title="Logo"><h3>Edumax</h3></a>
-							</div>
-						</div>
-						<div className="col-md-9">
-							<div className="navbar-collapse collapse" id="navbar">
-								<ul className="nav navbar-nav menubar">
-									<li className="dropdown">
-										<a aria-expanded="false" aria-haspopup="true" href="index.html" role="button" className="dropdown-toggle" title="Home">Home</a>
-										<i className="ddl-switch fa fa-angle-down"></i>
-										<ul className="dropdown-menu">
-											<li><a title="Home 2" href="home2.html">Home 2</a></li>
-										</ul>
-									</li>
-									<li className="dropdown">
-										<a aria-expanded="false" aria-haspopup="true" role="button" className="dropdown-toggle" title="Courses" href="courses-page.html">Courses</a>
-										<i className="ddl-switch fa fa-angle-down"></i>
-										<ul className="dropdown-menu">
-											<li><a title="Courses Detail" href="coursesdetails-page.html">Courses Detail</a></li>
-										</ul>
-									</li>
-									<li><a title="Event" href="events-page.html">Event</a></li>
-									<li><a title="About" href="about-page.html">About</a></li>
-									<li className="dropdown active">
-										<a aria-expanded="false" aria-haspopup="true" role="button" className="dropdown-toggle" title="Blog" href="blog-page.html">Blog</a>
-										<i className="ddl-switch fa fa-angle-down"></i>
-										<ul className="dropdown-menu">
-											<li><a title="Blog Post" href="blogpost-page.html">Blog Post</a></li>
-										</ul>
-									</li>
-									<li className="dropdown">
-										<a aria-expanded="false" aria-haspopup="true" role="button" className="dropdown-toggle" title="Pages" href="#">Pages</a>
-										<i className="ddl-switch fa fa-angle-down"></i>
-										<ul className="dropdown-menu">
-											<li><a title="Home 2" href="home2.html">Home 2</a></li>
-											<li><a title="Course Detail" href="coursesdetails-page.html">Course Detail</a></li>
-											<li><a title="BlogPost" href="blogpost-page.html">BlogPost</a></li>
-										</ul>
-									</li>
-									<li><a title="Contact" href="contactus-page.html">Contact</a></li>
-								</ul>
-							</div>
-						</div>
-					</nav>
-					<div className="menu-search">
-						<div id="sb-search" className="sb-search">
-							<form>
-								<input className="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search" />
-								<button className="sb-search-submit"><i className="fa fa-search"></i></button>
-								<span className="sb-icon-search"></span>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
 	<div className="container-fluid no-padding pagebanner">
 		<div className="container">
+
 			<div className="pagebanner-content">
-				<h3> Hello {username} ({email})</h3>
+			<div className="chip">
+				<img src="images/img_avatar.png" alt="Person" width="96" height="96"></img>
+				<h3> Hello {username} </h3>
+				<h3>   ({email})</h3>
+			</div>
+			
 				<ol className="breadcrumb">
 					<li><a href="myprofilenew">My Profile</a></li>
 					<li>Blog</li>
@@ -484,6 +372,7 @@ export default function blognew( {username,email,loggedIn} ) {
 
 export async function getServerSideProps(context) {
 	try {
+	
 	  const cookies = parseCookies(context.req); // Parse the cookies from the incoming request
 	  const username = cookies['username'] || null;
 	  const email    =    cookies['email'] ; // Access the specific cookie by name
@@ -525,3 +414,7 @@ export async function getServerSideProps(context) {
 	}, {});
   };
   
+
+blognew.getLayout = function(page) {
+    return <HomeLayout>{page}</HomeLayout>;
+  };

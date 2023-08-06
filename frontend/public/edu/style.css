@@ -1363,7 +1363,7 @@ a.footer-logo{
 .pagebanner h3{
 	position: relative;
 	font-size: 35px;
-	line-height: 26px;
+	line-height: 44px;
 	font-family: 'Roboto Slab', serif;
 	font-weight: 700;
 	color: #fff;
@@ -1655,3 +1655,23 @@ a.footer-logo{
 		font-size: 18px;
 	}
 }
+
+.chip {
+	display: inline-block;
+	padding: 0 25px;
+	height: 50px;
+	font-size: 16px;
+	line-height: 50px;
+	border-radius: 25px;
+	background-color: #1c0202;
+	position: relative;
+  }
+  
+  .chip img {
+	float: left;
+	margin: 0 10px 0 -25px;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	position: relative;
+  }

@@ -155,10 +155,10 @@ class Tutorials(models.Model):
 
     title = models.CharField(max_length=200, verbose_name="Meta Title Info")
     description = models.TextField(verbose_name="Meta Description")
-    keywords = models.CharField(max_length=200, verbose_name="Meta Keywords")
-    meta_tags = models.CharField(max_length=200, verbose_name="Other Users Generated Tags for Search")
-    heading = models.CharField(max_length=100, verbose_name="Display Breadcrumb Page Title")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    keywords = models.CharField(max_length=200, verbose_name="Meta Keywords",blank=True )
+    meta_tags = models.CharField(max_length=200, verbose_name="Other Users Generated Tags for Search",blank=True )
+    heading = models.CharField(max_length=100, verbose_name="Display Breadcrumb Page Title",blank=True )
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True,default=1)
     content = models.TextField(verbose_name="The Rich Text")
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Author",null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
@@ -168,3 +168,5 @@ class Tutorials(models.Model):
 
     def __str__(self):
         return self.title
+
+

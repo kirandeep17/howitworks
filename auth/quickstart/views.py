@@ -204,6 +204,15 @@ def TutorialAPIView(request, keyword):
 
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def ArticleAPIView(request, id):
+    data = get_object_or_404(Tutorials, id=id)
+    
+    serializer = TutorialsSerializer(data)
+    return Response(serializer.data)
+
+
 # Define function to search book
 def search(request):
     results = []
@@ -217,3 +226,11 @@ def search(request):
         results = Book.objects.filter(Q(book_name__icontains=query) | Q(author_name__icontains=query) | Q(price__icontains=query) )
 
     return render(request, 'search.html', {'query': query, 'results': results})
+
+
+class BlogPostView(APIView):
+    def post(self, request):
+        serializer = TutorialsSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save() 
+        return Response(serializer.data)

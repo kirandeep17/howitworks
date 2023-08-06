@@ -59,7 +59,8 @@ cursor: pointer;
 border: solid 1px #BA68C8
 }
 .snippet-body {
-    background: rgb(99, 39, 120);
+    background: rgb(255, 255, 255);
+    color:black;
 }
 
 .mycontainer {
@@ -68,4 +69,40 @@ border: solid 1px #BA68C8
     padding-left: 1rem;
     margin-right: auto;
     margin-left: auto;
+    color:orange;
 }
+.btncstm {
+  margin-top: 20px;
+}
+
+.py-5 {
+  padding-top: 3rem!important;
+  padding-bottom: 3rem!important;
+}
+.p-3 {
+  padding: 1rem!important;
+}
+
+.align-items-center {
+  align-items: center!important;
+}
+.justify-content-between {
+  justify-content: space-between!important;
+}
+.d-flex {
+  display: flex!important;
+}
+
+.align-items-center {
+  align-items: center!important;
+}
+.justify-content-between {
+  justify-content: space-between!important;
+}
+.d-flex {
+  display: flex!important;
+}
+.textarea {
+  background-color:rgb(133, 95, 186);
+}
+

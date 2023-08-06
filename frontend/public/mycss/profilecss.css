@@ -1,22 +1,6 @@
-.body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  .container {
-    width: 75%;
-    
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-    perspective: 100%;
-  }
-  .content {
+
+
+  .kcontent {
     padding: 20px;
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -70,4 +54,21 @@
     height: 200px;
 }
 
-.ck-editor__editable {min-height: 300px;}
+.quill {
+  color: rgb(0, 0, 0);
+  background-color: white;
+  
+}
+
+.button {
+  color: #fff;
+    background: #009579;
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 30%;
+    height: 20%;
+}

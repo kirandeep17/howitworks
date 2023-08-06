@@ -8,6 +8,9 @@ import Cookies from 'universal-cookie';
 import axios  from 'axios';
 import Router from 'next/router'
 
+import Layout2 from '../components/Layout/Layout2';
+
+
 
 export default function Loginnew( {username} ) {
     const router = useRouter()
@@ -96,11 +99,9 @@ export default function Loginnew( {username} ) {
 
     return (
         <div>
-        <Head>
-                <link rel="stylesheet" href="/mycss/style.css"></link>
-        </Head>
+       
         
-            <div className="container">
+            <div className="kcontainer">
                 
                 <div className="login form">
                 <header>Login</header>
@@ -166,4 +167,8 @@ export async function getServerSideProps(context) {
 	  cookies[name] = decodeURIComponent(value);
 	  return cookies;
 	}, {});
+  };
+
+  Loginnew.getLayout = function(page) {
+    return <Layout2>{page}</Layout2>;
   };
