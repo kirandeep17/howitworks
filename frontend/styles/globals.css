@@ -21,6 +21,12 @@
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
   );
+.textspeachButton {
+  margin-left: 80%;
+  background-color: blue;
+  padding: 5px;
+  border-radius: 12px;
+}
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;

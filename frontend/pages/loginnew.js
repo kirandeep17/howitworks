@@ -32,6 +32,7 @@ export default function Loginnew( {username} ) {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email, password }),
+            withCredentials:true
           });
           
           if (response.ok) {
@@ -80,6 +81,7 @@ export default function Loginnew( {username} ) {
             console.log(res.data.username)
             document.cookie='username='+res.data.username
             document.cookie='email='+res.data.email
+            document.cookie='id='+res.data.id
            // alert(getCookieByName(username))
             Router.push('/blog-post')
            

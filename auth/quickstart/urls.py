@@ -1,7 +1,7 @@
 from django.urls import path
 from unicodedata import UCD
 
-from .views import RegisterView,UserUpdateAPIView,TutorialAPIView,UserProfileView,ArticleAPIView,BlogPostView
+from .views import RegisterView,UserUpdateAPIView,TutorialAPIView,UserProfileView,ArticleAPIView,BlogPostView,blog_list
 from .views import LoginView,UserView,LogoutView,CampaignListAPIView,CampaignDetailsAPIView,SubscriberToCampaignAPIView,IndexAPIView
 
 urlpatterns = [
@@ -17,6 +17,9 @@ urlpatterns = [
 
     #blogpostendpoints
     path('blogPost', BlogPostView.as_view()),
+    path('blogPostlist', blog_list),
+
+    
 
 
     path('campaigns',CampaignListAPIView.as_view(),name="campaigns"),

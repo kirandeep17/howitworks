@@ -3,6 +3,9 @@ import Head from 'next/head';
 //import RichTextEditor from '../components/RichTextEditor';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import { getCookies, setCookie, deleteCookie } from 'cookies-next';
+import HomeLayout from '../components/Layout/HomeLayout';
+
 
 
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
@@ -38,8 +41,35 @@ export default function  ThreeDEffectContainer  ()  {
   
   const [category, setCategory] = useState('category1');
   const [description, setDescription] = useState('');
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+
+  
+
+
+
+
   function submitHandler(event) {
     event.preventDefault();
+
+    const userid = getCookie('id');
+
+ 
+    
 
     const requestObj = {
       //id: new Date().toISOString(),
@@ -47,7 +77,8 @@ export default function  ThreeDEffectContainer  ()  {
       content: content,
       isDraft: isDraft,
       isPublished: isPublished,
-      description:"hello"
+      description:"hello",
+      author:userid
     };
 
     fetch('http://127.0.0.1:8000/api/blogPost', {
@@ -58,7 +89,7 @@ export default function  ThreeDEffectContainer  ()  {
       }
     }).then(response => response.json())
       .then((data) => {
-        console.log(data.content)
+        console.log(data)
       });
 
   }
@@ -137,3 +168,6 @@ export default function  ThreeDEffectContainer  ()  {
 };
 
 
+ThreeDEffectContainer.getLayout = function(page) {
+  return <HomeLayout>{page}</HomeLayout>;
+};

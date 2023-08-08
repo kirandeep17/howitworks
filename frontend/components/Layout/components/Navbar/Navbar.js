@@ -29,10 +29,10 @@ export default function Navbar() {
 										<a aria-expanded="false" aria-haspopup="true" href="/team" role="button" className="dropdown-toggle" title="Team">Team</a>
 									</li>
 									<li className="dropdown active">
-										<a aria-expanded="false" aria-haspopup="true" href="/write" role="button" className="dropdown-toggle" title="Write">Write</a>
+										<a aria-expanded="false" aria-haspopup="true" href="/writepost" role="button" className="dropdown-toggle" title="Write">Write</a>
 									</li>
 									<li className="dropdown active">
-										<a aria-expanded="false" aria-haspopup="true" href="/contact" role="button" className="dropdown-toggle" title="Contact">Contact</a>
+										<a aria-expanded="false" aria-haspopup="true" href="/contactUS" role="button" className="dropdown-toggle" title="Contact">Contact</a>
 									</li>
 								</ul>
 							</div>

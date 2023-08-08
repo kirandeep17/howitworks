@@ -55,6 +55,7 @@ class LoginView(APIView):
 
         response.set_cookie(key='jwt', value=token, httponly=True)
         response.set_cookie(key='email', value=email, httponly=True)
+        response.set_cookie(key='userid', value=user.id, httponly=True)
 
         response.data = {
             'jwt': token
@@ -230,7 +231,16 @@ def search(request):
 
 class BlogPostView(APIView):
     def post(self, request):
+        id = request.user.id
+        print("id is ",id)
         serializer = TutorialsSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save() 
         return Response(serializer.data)
+    
+@api_view(('GET',))
+def blog_list(request):
+    blogs = Tutorials.objects.all()
+    serializer = TutorialsSerializer(blogs, many=True)
+
+    return Response(serializer.data)

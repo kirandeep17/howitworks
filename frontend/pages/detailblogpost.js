@@ -2,10 +2,19 @@ import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import Head from 'next/head';
+import HomeLayout from '../components/Layout/HomeLayout';
 
-export default function Loginnew( {userData} ) {
+export default function detailblogpost( {userData} ) {
     const router = useRouter()
     const { msg } = router.query
+
+	function  speak() {
+		let utterance = new SpeechSynthesisUtterance(userData.content	);
+		let voicesArray = speechSynthesis.getVoices();
+			utterance.voice = voicesArray[2];
+			speechSynthesis.speak(utterance);
+	}
+
     return (
         <div>
             
@@ -27,9 +36,11 @@ export default function Loginnew( {userData} ) {
 							<div class="entry-block">
 								<div class="entry-title">
 									<h3>{userData.title}</h3>
+									<input type='button' className="textspeachButton" onClick={speak} value="text to speack test"/>
 								</div>
 								<div class="entry-content">
 								<div dangerouslySetInnerHTML={{ __html: userData.content }}>
+
 
                   
 									</div>
@@ -152,9 +163,15 @@ export default function Loginnew( {userData} ) {
 					<span>Web Designer</span>
 					<p>My name is Ruth. I grew up and studied in...</p>
 				</aside>
+
+
+
 			</div>
 		</div>
 		<div class="section-padding"></div>
+
+		
+
 	</div>
 
 
@@ -185,3 +202,7 @@ export async function getServerSideProps(context) {
 
 	
 };
+
+detailblogpost.getLayout = function(page) {
+	return <HomeLayout>{page}</HomeLayout>;
+  };
