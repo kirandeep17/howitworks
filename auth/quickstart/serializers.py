@@ -50,7 +50,7 @@ class SubscriberSerializer(serializers.ModelSerializer):
         fields="__all__"
 
 class TutorialsSerializer(serializers.ModelSerializer):
-    myauthor = serializers.CharField(source='author.author',read_only=True)
+    myauthor = serializers.CharField(source='author.username',read_only=True)
     class Meta:
         model=Tutorials
         fields="__all__"

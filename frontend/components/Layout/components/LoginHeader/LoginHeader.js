@@ -1,8 +1,10 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar/Navbar2';
 import Router from 'next/router'
+import { useState } from 'react';
 
 export default function LoginHeader() {
+	
 
 	function clearAllCookies() {
 		const cookies = document.cookie.split(';');

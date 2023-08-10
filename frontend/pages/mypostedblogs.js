@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import HomeLayout from '../components/Layout/HomeLayout';
 import Router from 'next/router'
 import { useState } from 'react';
-export default function blognew( {username,email,loggedIn,bloglist} ) {
+export default function mypostedblogs( {username,email,loggedIn,bloglist} ) {
 	const [search, setSearch] = useState('');
     let [searchResult,setSearchResult]= useState('');
 	searchResult =bloglist;
@@ -335,9 +335,10 @@ export async function getServerSideProps(context) {
 	  const username = cookies['username'] || null;
 	  const email    =    cookies['email'] ; // Access the specific cookie by name
 	  let loggedIn;
+      const userid    =    cookies['id'] ;
 
 	  try {
-		const response = await fetch('http://127.0.0.1:8000/api/blogPostlist', {
+		const response = await fetch(`http://127.0.0.1:8000/api/blogPostlist/${userid}`, {
 		  method: 'GET',
 		  headers: {
 			'Content-Type': 'application/json',
@@ -406,6 +407,6 @@ export async function getServerSideProps(context) {
   };
   
 
-blognew.getLayout = function(page) {
+  mypostedblogs.getLayout = function(page) {
     return <HomeLayout>{page}</HomeLayout>;
   };

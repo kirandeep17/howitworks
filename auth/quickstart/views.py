@@ -6,13 +6,13 @@ from .models import User
 import jwt, datetime
 
 from django.shortcuts import render,get_object_or_404
-from .models import  Book, Booktype,Tutorials
+from .models import  Book, Booktype,Tutorials,Category
 from django.db.models import Q
 
 from rest_framework import generics,response
 from .models import Campaign,Subscriber
 from rest_framework import status
-from .serializers import SubscriberSerializer,CampaignSerializer,TutorialsSerializer
+from .serializers import SubscriberSerializer,CampaignSerializer,TutorialsSerializer,CategorySerializer
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
@@ -244,3 +244,44 @@ def blog_list(request):
     serializer = TutorialsSerializer(blogs, many=True)
 
     return Response(serializer.data)
+
+@api_view(('GET',))
+def searchblog(request):
+    results = []
+
+    if request.method == "GET":
+        query = request.GET.get('search')
+
+        if query == '':
+            query = 'None'
+
+        results = Tutorials.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+
+        serializer = TutorialsSerializer(results, many=True)
+
+        return Response(serializer.data)
+
+@api_view(('GET',))
+def category_list(request):
+    category = Category.objects.all()
+    serializer = CategorySerializer(category, many=True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def userblogView(request, id):
+    print(id)
+    data = Tutorials.objects.filter(author=id)
+    
+    serializer = TutorialsSerializer(data,many=True)
+    return Response(serializer.data)
+
+class BlogPostUpdatedView(APIView):
+    def patch(self, request):
+        id = request.data['id']
+        print("id is ",id)
+        obj = Tutorials.objects.filter(id=id).first()
+        serializer = TutorialsSerializer(obj,data=request.data,partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save() 
+        return Response(serializer.data)

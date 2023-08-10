@@ -34,14 +34,15 @@ const modules = {
   },
 }
 
-export default function  ThreeDEffectContainer  ()  {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+export default function  ThreeDEffectContainer  ({userData,id})  {
+  const [title, setTitle] = useState(userData.title);
+  const [content, setContent] = useState(userData.content);
   const [isDraft, setIsDraft] = useState(true);
   const [isPublished, setIsPublished] = useState(false);
   
   const [category, setCategory] = useState('category1');
   const [description, setDescription] = useState('');
+  const [userid, setUserid] = useState(id);
 
  
 
@@ -103,11 +104,12 @@ export default function  ThreeDEffectContainer  ()  {
       isPublished: isPublished,
       description:"hello",
       author:userid,
-      category:selectedCategory
+      category:selectedCategory,
+      id:userid
     };
 
-    fetch('http://127.0.0.1:8000/api/blogPost', {
-      method: 'POST',
+    fetch('http://127.0.0.1:8000/api/blogPostUpdate', {
+      method: 'PATCH',
       body: JSON.stringify(requestObj),
       headers: {
         'Content-Type': 'application/json'
@@ -142,8 +144,7 @@ export default function  ThreeDEffectContainer  ()  {
 						
 							<form id="inputForm" onSubmit={submitHandler}>
 								<label for="title">Title:</label>
-								<input type="text" id="title" value={title}
-                    onChange={(e) => setTitle(e.target.value)} placeholder="Enter the title"></input>
+								<input type="text" id="title" value={title}  onChange={(e) => setTitle(e.target.value)} placeholder="Enter the title"></input>
 
 								<label for="category">Category:</label>
 								<select value={selectedCategory} onChange={handleCategoryChange}>
@@ -162,7 +163,7 @@ export default function  ThreeDEffectContainer  ()  {
                                 
 
                                 
-                <QuillNoSSRWrapper modules={modules} onChange={setContent} theme="snow" />
+                <QuillNoSSRWrapper name="content" modules={modules} onChange={setContent} value={content} theme="snow" />
 
 
 								
@@ -195,6 +196,27 @@ export default function  ThreeDEffectContainer  ()  {
  
 };
 
+export async function getServerSideProps(context) {
+    const id = context.query.id;
+    //console.log("helllooooooooooooooooo "+id );
+
+	const response = await fetch('http://127.0.0.1:8000/api/article/'+id, {
+		method: 'GET',
+		headers: {
+		  'Content-Type': 'application/json',
+		},
+	  });
+		const userData = await response.json();
+  	console.log("here is the user data "+userData.title);
+	  return {
+		props: {
+			userData,
+            id  
+		},
+	  };
+
+	
+};
 
 ThreeDEffectContainer.getLayout = function(page) {
   return <HomeLayout>{page}</HomeLayout>;

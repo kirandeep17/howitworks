@@ -114,9 +114,7 @@ export default function Loginnew( {username} ) {
                     <input type="submit" className="button" value="Login"/>
                     
                 </form>
-                <button onClick={fetchSecondEndpointData}>
-                      Activate Lasers
-                    </button>
+                
                 <div className="signup">
                     <span className="signup">Don't have an account?
                     <a href="/register"><label for="check">Signup</label></a>

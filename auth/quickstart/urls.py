@@ -1,7 +1,7 @@
 from django.urls import path
 from unicodedata import UCD
 
-from .views import RegisterView,UserUpdateAPIView,TutorialAPIView,UserProfileView,ArticleAPIView,BlogPostView,blog_list
+from .views import RegisterView,UserUpdateAPIView,TutorialAPIView,UserProfileView,BlogPostUpdatedView,ArticleAPIView,BlogPostView,blog_list,searchblog,category_list,userblogView
 from .views import LoginView,UserView,LogoutView,CampaignListAPIView,CampaignDetailsAPIView,SubscriberToCampaignAPIView,IndexAPIView
 
 urlpatterns = [
@@ -18,6 +18,7 @@ urlpatterns = [
     #blogpostendpoints
     path('blogPost', BlogPostView.as_view()),
     path('blogPostlist', blog_list),
+    path('blogPostlist/<int:id>', userblogView),
 
     
 
@@ -27,7 +28,10 @@ urlpatterns = [
     path('subscriber',SubscriberToCampaignAPIView.as_view(),name="subscribe"),
     path('index',IndexAPIView.as_view(),name="index"),
     #path('tutorials',TutorialAPIView.as_view(),name="tutorial"),
-    path('search/<str:keyword>', TutorialAPIView, name='search'),
+    path('searchblog', searchblog, name='search'),
     path('article/<int:id>', ArticleAPIView, name='article'),
+    path('categorylist', category_list, name='category'),
+    path('blogPostUpdate', BlogPostUpdatedView.as_view()),
+    
     
 ]

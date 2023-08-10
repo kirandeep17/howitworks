@@ -111,6 +111,11 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.author or 'Uncategorized'
+    
+    def save(self, *args, **kwargs):
+        if not self.author:
+            self.author = self.username
+        super(User, self).save(*args, **kwargs)
 
 class CustomUser(models.Model):
     GENDER_CHOICES = (

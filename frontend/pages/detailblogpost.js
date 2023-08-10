@@ -29,14 +29,14 @@ export default function detailblogpost( {userData} ) {
 					<div class="entry-block">
 						<div class="entry-contentblock">
 							<div class="entry-meta">
-								<span class="postby">By : <a href="#" title="Andreanne Turcotte"> Andreanne Turcotte</a></span>
+								<span class="postby">By : <a href="#" title="Andreanne Turcotte"> {userData.myauthor}</a></span>
 								<span class="postcatgory">Category : <a href="#" title="News Posted"> News Posted</a></span>
-								<span class="postdate">Date : <a href="#" title="25th May 2016"> 25th May 2016</a></span>
+								<span class="postdate">Date : <a href="#" title="25th May 2016"> {userData.created_at}</a></span>
 							</div>
 							<div class="entry-block">
 								<div class="entry-title">
 									<h3>{userData.title}</h3>
-									<input type='button' className="textspeachButton" onClick={speak} value="text to speack test"/>
+									<input type='button' className="textspeachButton" onClick={speak} value="Read text"/>
 								</div>
 								<div class="entry-content">
 								<div dangerouslySetInnerHTML={{ __html: userData.content }}>
@@ -159,7 +159,7 @@ export default function detailblogpost( {userData} ) {
 				</aside>
 				<aside class="widget courses-staff">
 					<img src="images/staff.jpg" alt="staff" width="275" height="288"/>
-					<h3>Charlie Brown</h3>
+					<h3>{userData.myauthor}</h3>
 					<span>Web Designer</span>
 					<p>My name is Ruth. I grew up and studied in...</p>
 				</aside>

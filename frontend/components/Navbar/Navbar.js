@@ -12,8 +12,8 @@ export default function Navbar() {
 									<span className="icon-bar"></span>
 									<span className="icon-bar"></span>
 								</button>
-								<a title="Logo" href="index.html" className="navbar-brand"><img src="images/logo.png" alt="logo"/>How It Works<span>Education of Best</span></a>
-								<a href="index.html" className="mobile-logo" title="Logo"><h3>How It Works</h3></a>
+								<a title="Logo" href="/" className="navbar-brand"><img src="images/logo.png" alt="logo"/>How It Works<span>Education of Best</span></a>
+								<a href="/" className="mobile-logo" title="Logo"><h3>How It Works</h3></a>
 							</div>
 						</div>
 						<div className="col-md-9">

@@ -4,31 +4,20 @@ import { useRouter } from 'next/router'
 import Head from 'next/head';
 import { useEffect } from 'react';
 import HomeLayout from '../components/Layout/HomeLayout';
-import Router from 'next/router'
+import Router from 'next/router';
 import { useState } from 'react';
-export default function blognew( {username,email,loggedIn,bloglist} ) {
-	const [search, setSearch] = useState('');
-    let [searchResult,setSearchResult]= useState('');
-	searchResult =bloglist;
+export default function searchblog( {searchParamQuery} ) {
+    const [search, setSearch] = useState('');
+    const [searchResult,setSearchResult]= useState('');
 
-	
-	//setSearch("")
+    useEffect(() => {
+        // This function will be called when the component loads
+       
 
-	const handleSubmit = async (e) =>  {
-       //console.log(myvariable);
-	   e.preventDefault();
-	   console.log(search);
-	   setSearchResult('');
+        handleSubmit(new Event('submit'))
 
-	   
-	   const searchParam = search;
-	   Router.push(`/searchblog?search=${search}`)
-	   
-
-	   
         
-    }
-
+    }, []);
 
 
 	function clearAllCookies() {
@@ -41,7 +30,36 @@ export default function blognew( {username,email,loggedIn,bloglist} ) {
 		  document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
 		}
 	  }
+
+
+      
+
 	  
+      const handleSubmit = async (e) =>  {
+        //console.log(myvariable);
+        e.preventDefault();
+      
+        console.log(search);
+       
+        setSearchResult('');
+        let searchParam = search;
+        if(search.length>0){
+            searchParam = search;
+           
+
+        } else {            
+            searchParam = searchParamQuery;
+            
+
+        }
+        
+        const response = await fetch(`http://127.0.0.1:8000/api/searchblog?search=${searchParam}`);
+        const data = await response.json();
+        console.log(data)
+        setSearchResult(data);
+        console.log(searchResult)
+        
+    }
 
 	const handleLogout = async() =>{
 
@@ -93,6 +111,20 @@ export default function blognew( {username,email,loggedIn,bloglist} ) {
 				</div>
 			}
 	  };
+
+
+    
+      const renderContentdiv = (data) => {
+		
+			return(
+
+				<div className="topheader-right">
+				<a href="#" onClick={handleLogout} title="logout"><i className="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+				</div>
+			)
+			
+			
+	  };
     
 	
     
@@ -102,43 +134,31 @@ export default function blognew( {username,email,loggedIn,bloglist} ) {
 			
 			<Head>
 			<link rel="stylesheet" type="text/css" href="/edu/style.css"></link>
+            
 			
-			</Head>
+		</Head>
             <div>
             
 
 
-	<div className="container-fluid no-padding ">
-		<div className="container">
-
-			<div className="">
-			
-			<div className="chip">
-				<img src="images/img_avatar.png" alt="Person" width="96" height="96"></img>
-				Hello {username} 
-				   ({email})
-			</div>
-			<form onSubmit={handleSubmit} >
-				<div class="form-group mx-sm-3 mb-2">
-				<label for="" class="sr-only">search</label>
-				<input name="search"  type="" onChange={(e) => setSearch(e.target.value)} class="form-control" id="" placeholder="Search"/>
-				</div>
-				<center><button type="submit" class="btn btn-success btn-lg mb-2">Search</button></center>
-			</form>
-			
-			
-			</div>
-		</div>
-	</div>
+	
 	<div className="container blog">
-		<div className="section-padding"></div>
+		<div className="section-padding">
+        <form onSubmit={handleSubmit}>
+            <div class="form-group mx-sm-3 mb-2">
+            <label for="" class="sr-only">search</label>
+            <input name="search" onChange={(e) => setSearch(e.target.value)} type="" class="form-control" id="" placeholder="Search"/>
+            </div>
+            <center><button type="submit" class="btn btn-success btn-lg mb-2">Search</button></center>
+        </form>
+        </div>
 		<div className="row">
 			<div className="col-md-9 col-sm-8 content-area">
 
 
 		
-			<div >
-                        {searchResult &&
+			<div id="mydiv"  >
+                        { searchResult &&
                             searchResult.map((blog)=>{
                                 return(
                                     <div key={blog.id} >
@@ -170,7 +190,6 @@ export default function blognew( {username,email,loggedIn,bloglist} ) {
 										
 										
 										
-
 										
 										
                                     </div>
@@ -335,54 +354,20 @@ export async function getServerSideProps(context) {
 	  const username = cookies['username'] || null;
 	  const email    =    cookies['email'] ; // Access the specific cookie by name
 	  let loggedIn;
+      const searchParamQuery = context.query.search || '';
 
-	  try {
-		const response = await fetch('http://127.0.0.1:8000/api/blogPostlist', {
-		  method: 'GET',
-		  headers: {
-			'Content-Type': 'application/json',
-		  },
-		  withCredentials:true
-		});
-		
-		if (response.ok) {
-		  // Login successful, redirect to a dashboard or home page
-		  console.log('SUCCESSFUL Fetch');
-		  const bloglist = await response.json()
 
-		  if(username != undefined){
-			loggedIn = true 
-		  }
-		  if(username == undefined){
-			return {
-				redirect: {
-					permanent: false,
-					destination: "/"
-				}
-			}
-		  }
-		  return {
-			props: {
-				username,
-				email,
-				loggedIn,
-				bloglist
-			},
-		  };
-		  
-		
-		
-		  
-		} else {
-		  // Handle login error
-		  console.error('Login failed');
-		  alert('Login Failed');
-		}
-	  } catch (error) {
-		console.error('Error occurred:', error);
-	  }
 
-	  
+        
+     
+	
+
+        return {
+            props: {
+                searchParamQuery,
+                
+            },
+        };
 
 
 	  
@@ -406,6 +391,6 @@ export async function getServerSideProps(context) {
   };
   
 
-blognew.getLayout = function(page) {
+searchblog.getLayout = function(page) {
     return <HomeLayout>{page}</HomeLayout>;
   };

@@ -9,7 +9,7 @@ export default function Footer() {
 			<div className="row">
 				<div className="col-md-6 col-sm-6">
 					<aside className="ftr-widget about_widget">
-						<a className="footer-logo" href="#" title="Logo"><img alt="logo" src="images/logo.png"/>Edumax<span>Education of Best</span></a>
+						<a className="footer-logo" href="#" title="Logo"><img alt="logo" src="images/logo.png"/>How IT Works<span>Education of Best</span></a>
 						<ul>
 							<li><a href="#" title="Facebook"><i className="fa fa-facebook"></i></a></li>
 							<li><a href="#" title="Twitter"><i className="fa fa-twitter"></i></a></li>
@@ -18,7 +18,9 @@ export default function Footer() {
 							<li><a href="#" title="Linkedin"><i className="fa fa-linkedin"></i></a></li>
 							<li><a href="#" title="Rss"><i className="fa fa-rss"></i></a></li>
 						</ul>
-						<p>Trem ipsum dolor sit ameThese men promptly escaped from maximum security astockade to the Los Angeles underground. These Happy Days are yours and mine Happy Days elites consectetur adipiscing elit, sed do eiusmod tempor incididunt utiles labore et dolor hates magna ali qua.</p>
+						<p>&copy; 2023 "How It Works" - Unveiling the Mechanics Behind the Mysteries</p>
+       					 <p class="disclaimer">All rights reserved. No part of this website may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.</p>
+						
 					</aside>
 				</div>
 			

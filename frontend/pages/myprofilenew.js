@@ -16,11 +16,11 @@ export default function myprofile( {username,email,loggedIn,userData} ) {
         password:userData.password,
         lastname: userData.last_name,
         mobile_number: userData.mobile_number,
-        address_line_1: null,
-        address_line_2: null,
-        postcode: null,
-        state: null,
-        area: null,
+        address_line_1: userData.address_line_1,
+        address_line_2: userData.address_line_1,
+        postcode: userData.postcode,
+        state: userData.state,
+        area: userData.area,
         email: email,
         education: null,
         country: null,
@@ -203,7 +203,7 @@ export default function myprofile( {username,email,loggedIn,userData} ) {
                     <div className="col-md-12"><label className="labels">Mobile Number</label>
 					<input type="text" name="mobile_number" value={formData.mobile_number} className="form-control" placeholder="enter phone number" onChange={handleChange} /></div>
                     <div className="col-md-12"><label className="labels">Address Line 1</label>
-					<input type="text" name="addressLine1" value={formData.address_line_1} className="form-control" placeholder="enter address line 1" onChange={handleChange} /></div>
+					<input type="text" name="address_line_1" value={formData.address_line_1} className="form-control" placeholder="enter address line 1" onChange={handleChange} /></div>
                     <div className="col-md-12"><label className="labels">Address Line 2</label>
 					<input type="text" name="addressLine2" value={formData.address_line_2} className="form-control" placeholder="enter address line 2" onChange={handleChange} /></div>
                     <div className="col-md-12"><label className="labels">Postcode</label>
